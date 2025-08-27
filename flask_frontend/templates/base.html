@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Molecular Analytics Suite{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- 3Dmol.js for molecular visualization -->
+    <script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🧬</div>
+                    <div class="logo-text">
+                        <h1><a href="{{ url_for('index') }}">Molecular Analytics Suite</a></h1>
+                        <p>Powered by RDKit & AI Agents</p>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <a href="{{ url_for('index') }}" class="nav-link">🔬 Analyze</a>
+                    <a href="{{ url_for('examples') }}" class="nav-link">🧪 Examples</a>
+                    <a href="{{ url_for('about') }}" class="nav-link">ℹ️ About</a>
+                    <div class="status-indicator" id="backendStatus">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Checking...</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🧬 Technology Stack</h3>
+                    <ul>
+                        <li>• <strong>Backend:</strong> FastAPI + Agno AI Agents</li>
+                        <li>• <strong>Chemistry:</strong> RDKit Molecular Analysis</li>
+                        <li>• <strong>Frontend:</strong> Flask + Vanilla JS</li>
+                        <li>• <strong>AI:</strong> Groq LLaMA 3.1 70B</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>🔬 Features</h3>
+                    <ul>
+                        <li>• SMILES Parsing & Validation</li>
+                        <li>• 17+ Molecular Descriptors</li>
+                        <li>• 3D Conformer Generation</li>
+                        <li>• ADMET Predictions</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>📊 Analysis Capabilities</h3>
+                    <ul>
+                        <li>• Lipinski Rule of Five</li>
+                        <li>• Drug-like Properties</li>
+                        <li>• Molecular Complexity</li>
+                        <li>• Pharmacokinetic Properties</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Molecular Analytics Suite. Built with ❤️ for computational chemistry.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html> 
